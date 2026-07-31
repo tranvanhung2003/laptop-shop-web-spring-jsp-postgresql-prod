@@ -18,8 +18,7 @@ public class UserController {
 
     @GetMapping("/")
     public String getHomePage(Model model) {
-        String test = userService.handleHello();
-        model.addAttribute("test", test);
+        model.addAttribute("test", "test");
         return "hello";
     }
 
@@ -31,7 +30,8 @@ public class UserController {
 
     @PostMapping("/admin/user/create")
     public String createUserPage(Model model, @ModelAttribute("newUser") User user) {
-        System.out.println("run here " + user);
+        userService.saveUser(user);
+
         return "hello";
     }
 }
