@@ -1,0 +1,26 @@
+{
+  "sqltools.connections": [
+    {
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "postgres",
+      "group": "tvhung",
+      "database": "postgres",
+      "username": "tranvanhung2003"
+    },
+    {
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "laptop_shop",
+      "group": "tvhung",
+      "database": "laptop_shop",
+      "username": "tranvanhung2003"
+    }
+  ]
+}
