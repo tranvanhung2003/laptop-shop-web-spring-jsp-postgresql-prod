@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.tvhung.laptop_shop.domain.User;
@@ -24,6 +25,13 @@ public class UserController {
         model.addAttribute("users", users);
 
         return "admin/user/index";
+    }
+
+    @GetMapping("/admin/user/{id}")
+    public String getUserDetailPage(Model model, @PathVariable long id) {
+        model.addAttribute("id", id);
+
+        return "admin/user/detail";
     }
 
     @GetMapping("/admin/user/create")
