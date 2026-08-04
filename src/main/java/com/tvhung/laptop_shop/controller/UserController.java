@@ -16,15 +16,13 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/")
-    public String getHomePage(Model model) {
-        model.addAttribute("test", "my test");
-
-        return "hello";
-    }
-
     @GetMapping("/admin/user")
     public String getUserPage(Model model) {
+        return "admin/user/index";
+    }
+
+    @GetMapping("/admin/user/create")
+    public String getCreateUserPage(Model model) {
         model.addAttribute("newUser", new User());
 
         return "admin/user/create";
@@ -34,6 +32,6 @@ public class UserController {
     public String createUserPage(Model model, @ModelAttribute("newUser") User user) {
         userService.saveUser(user);
 
-        return "hello";
+        return "redirect:/admin/user";
     }
 }
