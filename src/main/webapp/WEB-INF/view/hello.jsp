@@ -22,7 +22,7 @@
             </head>
 
             <body>
-                ${test}
+                <p>${test}</p>
                 <button class="btn btn-warning">Submit</button>
             </body>
 

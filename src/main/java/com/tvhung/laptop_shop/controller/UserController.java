@@ -20,7 +20,7 @@ public class UserController {
 
     @GetMapping("/")
     public String getHomePage(Model model) {
-        model.addAttribute("test", "test");
+        model.addAttribute("test", "my test");
         List<User> users = userService.getAllUsersByEmail("1@gmail.com");
         System.out.println(users);
         return "hello";
