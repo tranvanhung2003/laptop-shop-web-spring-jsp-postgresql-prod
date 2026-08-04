@@ -58,10 +58,10 @@
                                             <td>${user.email}</td>
                                             <td>${user.fullName}</td>
                                             <td>
-                                                <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
-                                                <a href="/admin/user/update?id=${user.id}"
-                                                    class="btn btn-warning mx-2">Update</a>
-                                                <a href="/admin/user/delete?id=${user.id}"
+                                                <a href="/admin/user/${user.id}" class="btn btn-success">Detail</a>
+                                                <a href="/admin/user/${user.id}/edit"
+                                                    class="btn btn-warning mx-2">Edit</a>
+                                                <a href="/admin/user/${user.id}/delete"
                                                     class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>

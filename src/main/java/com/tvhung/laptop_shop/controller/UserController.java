@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tvhung.laptop_shop.domain.User;
 import com.tvhung.laptop_shop.service.UserService;
@@ -15,11 +16,12 @@ import com.tvhung.laptop_shop.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequestMapping("/admin/user")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/admin/user")
+    @GetMapping
     public String getUserPage(Model model) {
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
@@ -27,27 +29,35 @@ public class UserController {
         return "admin/user/index";
     }
 
-    @GetMapping("/admin/user/{id}")
+    @GetMapping("/{id}")
     public String getUserDetailPage(Model model, @PathVariable long id) {
         model.addAttribute("id", id);
         User user = userService.getUserById(id);
-        System.out.println(user);
         model.addAttribute("user", user);
 
         return "admin/user/detail";
     }
 
-    @GetMapping("/admin/user/create")
+    @GetMapping("/create")
     public String getCreateUserPage(Model model) {
-        model.addAttribute("newUser", new User());
+        model.addAttribute("createUser", new User());
 
         return "admin/user/create";
     }
 
-    @PostMapping("/admin/user/create")
-    public String createUserPage(Model model, @ModelAttribute("newUser") User user) {
+    @PostMapping
+    public String createUser(Model model, @ModelAttribute("createUser") User user) {
         userService.saveUser(user);
 
         return "redirect:/admin/user";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String getEditUserPage(Model model, @PathVariable long id) {
+        model.addAttribute("id", id);
+        User user = userService.getUserById(id);
+        model.addAttribute("editUser", user);
+
+        return "admin/user/edit";
     }
 }
