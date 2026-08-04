@@ -1,7 +1,5 @@
 package com.tvhung.laptop_shop.controller;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,14 +19,14 @@ public class UserController {
     @GetMapping("/")
     public String getHomePage(Model model) {
         model.addAttribute("test", "my test");
-        List<User> users = userService.getAllUsersByEmail("1@gmail.com");
-        System.out.println(users);
+
         return "hello";
     }
 
     @GetMapping("/admin/user")
     public String getUserPage(Model model) {
         model.addAttribute("newUser", new User());
+
         return "admin/user/create";
     }
 
