@@ -28,14 +28,11 @@
                             <h3>Edit a user with id: ${id}</h3>
                             <hr />
                             <form:form method="post" action="/admin/user/${id}/edit" modelAttribute="editUser">
-                                <div class="mb-3">
-                                    <label class="form-label">Id:</label>
-                                    <form:input path="id" type="text" readonly="true" class="form-control" />
-                                </div>
+                                <form:hidden path="id" disabled="true" />
 
                                 <div class="mb-3">
                                     <label class="form-label">Email:</label>
-                                    <form:input path="email" type="email" class="form-control" />
+                                    <form:input path="email" type="email" disabled="true" class="form-control" />
                                 </div>
 
                                 <div class="mb-3">

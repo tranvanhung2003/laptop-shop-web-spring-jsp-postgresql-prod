@@ -10,12 +10,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 @Entity
 @Table(name = "users")
 public class User {
@@ -32,4 +34,10 @@ public class User {
     private String address;
 
     private String phoneNumber;
+
+    public void updateFrom(User user) {
+        this.fullName = user.getFullName();
+        this.address = user.getAddress();
+        this.phoneNumber = user.getPhoneNumber();
+    }
 }

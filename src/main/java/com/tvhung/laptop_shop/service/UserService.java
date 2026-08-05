@@ -18,6 +18,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User updateUser(long id, User updateUser) {
+        User existingUser = getUserById(id);
+        existingUser.updateFrom(updateUser);
+        return saveUser(existingUser);
+    }
+
     public User getUserById(long id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException(
                 "User not found with id: %d".formatted(id)));
