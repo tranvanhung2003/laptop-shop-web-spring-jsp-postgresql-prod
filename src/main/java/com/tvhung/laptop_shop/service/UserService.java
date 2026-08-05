@@ -14,16 +14,6 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
     private final UserRepository userRepository;
 
-    public User saveUser(User user) {
-        return userRepository.save(user);
-    }
-
-    public User updateUser(long id, User updateUser) {
-        User existingUser = getUserById(id);
-        existingUser.updateFrom(updateUser);
-        return saveUser(existingUser);
-    }
-
     public User getUserById(long id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException(
                 "User not found with id: %d".formatted(id)));
@@ -35,5 +25,20 @@ public class UserService {
 
     public List<User> getAllUsersByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public User updateUser(long id, User updateUser) {
+        User existingUser = getUserById(id);
+        existingUser.updateFrom(updateUser);
+        return saveUser(existingUser);
+    }
+
+    public void deleteUser(long id) {
+        User user = getUserById(id);
+        userRepository.delete(user);
     }
 }

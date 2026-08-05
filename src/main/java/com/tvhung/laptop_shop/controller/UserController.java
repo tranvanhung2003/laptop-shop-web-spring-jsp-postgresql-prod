@@ -67,4 +67,18 @@ public class UserController {
 
         return "redirect:/admin/user";
     }
+
+    @GetMapping("/{id}/delete")
+    public String getDeleteUserPage(Model model, @PathVariable("id") long id) {
+        model.addAttribute("id", id);
+
+        return "admin/user/delete";
+    }
+
+    @PostMapping("/{id}/delete")
+    public String deleteUser(Model model, @PathVariable("id") long id) {
+        userService.deleteUser(id);
+
+        return "redirect:/admin/user";
+    }
 }

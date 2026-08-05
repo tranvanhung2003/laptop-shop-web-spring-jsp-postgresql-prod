@@ -50,6 +50,7 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-warning">Edit</button>
+                                <a href="/admin/user" class="btn btn-success">Back</a>
                             </form:form>
                         </div>
                     </div>
