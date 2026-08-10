@@ -19,29 +19,27 @@ import lombok.ToString;
 @Builder
 @ToString
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "products")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String email;
+    private String name;
 
-    private String password;
+    private double price;
 
-    private String fullName;
+    private String image;
 
-    private String address;
+    private String detailDesc;
 
-    private String phoneNumber;
+    private String shortDesc;
 
-    private String avatar;
+    private long quantity;
 
-    // roleId
+    private long sold;
 
-    public void updateFrom(User user) {
-        this.fullName = user.getFullName();
-        this.address = user.getAddress();
-        this.phoneNumber = user.getPhoneNumber();
-    }
+    private String factory;
+
+    private String target;
 }
