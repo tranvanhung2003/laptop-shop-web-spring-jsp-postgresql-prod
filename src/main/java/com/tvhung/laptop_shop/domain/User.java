@@ -3,6 +3,8 @@ package com.tvhung.laptop_shop.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tvhung.laptop_shop.constants.DbConstants;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +27,7 @@ import lombok.ToString;
 @Builder
 @ToString
 @Entity
-@Table(name = "users")
+@Table(name = DbConstants.User.TABLE_NAME)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,11 +46,11 @@ public class User {
     private String avatar;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = DbConstants.User.ROLE_ID)
     @ToString.Exclude
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = DbConstants.User.MAPPED_BY)
     @ToString.Exclude
     @Builder.Default
     private List<Order> orders = new ArrayList<>();

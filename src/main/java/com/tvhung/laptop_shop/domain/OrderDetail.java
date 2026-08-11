@@ -1,16 +1,15 @@
 package com.tvhung.laptop_shop.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.tvhung.laptop_shop.constants.DbConstants;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,32 +24,27 @@ import lombok.ToString;
 @Builder
 @ToString
 @Entity
-@Table(name = DbConstants.Product.TABLE_NAME)
-public class Product {
+@Table(name = DbConstants.OrderDetail.TABLE_NAME, uniqueConstraints = { @UniqueConstraint(columnNames = {
+        DbConstants.OrderDetail.ORDER_ID,
+        DbConstants.OrderDetail.PRODUCT_ID
+})
+})
+public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private long quantity;
 
     private double price;
 
-    private String image;
-
-    private String detailDesc;
-
-    private String shortDesc;
-
-    private long quantity;
-
-    private long sold;
-
-    private String factory;
-
-    private String target;
-
-    @OneToMany(mappedBy = DbConstants.Product.MAPPED_BY)
+    @ManyToOne
+    @JoinColumn(name = DbConstants.OrderDetail.ORDER_ID)
     @ToString.Exclude
-    @Builder.Default
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+    private Order order;
+
+    @ManyToOne
+    @JoinColumn(name = DbConstants.OrderDetail.PRODUCT_ID)
+    @ToString.Exclude
+    private Product product;
 }

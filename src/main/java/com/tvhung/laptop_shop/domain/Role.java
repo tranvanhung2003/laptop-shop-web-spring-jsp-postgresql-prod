@@ -3,6 +3,8 @@ package com.tvhung.laptop_shop.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tvhung.laptop_shop.constants.DbConstants;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,7 +25,7 @@ import lombok.ToString;
 @Builder
 @ToString
 @Entity
-@Table(name = "roles")
+@Table(name = DbConstants.Role.TABLE_NAME)
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +35,7 @@ public class Role {
 
     private String description;
 
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = DbConstants.Role.MAPPED_BY)
     @ToString.Exclude
     @Builder.Default
     private List<User> users = new ArrayList<>();
