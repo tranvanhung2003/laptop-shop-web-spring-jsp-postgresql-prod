@@ -13,6 +13,7 @@ public class HomeController {
     public String getHomePage(Model model) {
         model.addAttribute("test", "My Home Page");
 
-        return "hello";
+        // return "hello";
+        return "redirect:/admin";
     }
 }
