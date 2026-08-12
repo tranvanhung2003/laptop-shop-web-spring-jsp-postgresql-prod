@@ -1,4 +1,4 @@
-package com.tvhung.laptop_shop.controller;
+package com.tvhung.laptop_shop.controller.admin;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ import com.tvhung.laptop_shop.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/admin/user")
 @RequiredArgsConstructor
+@RequestMapping("/admin/user")
 public class UserController {
     private final UserService userService;
 

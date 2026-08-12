@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 public class HomeController {
     @GetMapping("/")
     public String getHomePage(Model model) {
-        model.addAttribute("test", "my test");
+        model.addAttribute("test", "My Home Page");
 
         return "hello";
     }
