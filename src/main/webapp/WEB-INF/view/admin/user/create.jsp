@@ -43,7 +43,7 @@
                                             <h3>Create a user</h3>
                                             <hr />
                                             <form:form method="post" action="/admin/user" modelAttribute="createUser"
-                                                class="row">
+                                                enctype="multipart/form-data" class="row">
                                                 <div class="mb-3 col-12 col-md-6">
                                                     <label class="form-label">Email:</label>
                                                     <form:input path="email" type="email" class="form-control" />
@@ -71,7 +71,7 @@
 
                                                 <div class="mb-3 col-12 col-md-6">
                                                     <label class="form-label">Role:</label>
-                                                    <form:select path="role" class="form-select">
+                                                    <form:select path="role.name" class="form-select">
                                                         <form:option value="ADMIN">ADMIN</form:option>
                                                         <form:option value="USER">USER</form:option>
                                                     </form:select>
@@ -80,7 +80,7 @@
                                                 <div class="mb-3 col-12 col-md-6">
                                                     <label for="avatarFile" class="form-label">Avatar:</label>
                                                     <input class="form-control" type="file" id="avatarFile"
-                                                        accept=".jpg, .jpeg, .png">
+                                                        name="avatarFile" accept=".jpg, .jpeg, .png" />
                                                 </div>
 
                                                 <div class="mb-3 col-12">

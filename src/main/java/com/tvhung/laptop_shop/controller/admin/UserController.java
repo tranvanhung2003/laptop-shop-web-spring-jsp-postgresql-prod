@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tvhung.laptop_shop.domain.User;
 import com.tvhung.laptop_shop.service.UserService;
@@ -46,8 +48,10 @@ public class UserController {
     }
 
     @PostMapping
-    public String createUser(Model model, @ModelAttribute("createUser") User createUser) {
-        userService.saveUser(createUser);
+    public String createUser(Model model,
+            @ModelAttribute("createUser") User createUser,
+            @RequestParam("avatarFile") MultipartFile avatarFile) {
+        userService.saveUser(createUser, avatarFile);
 
         return "redirect:/admin/user";
     }
@@ -62,7 +66,7 @@ public class UserController {
     }
 
     @PostMapping("/{id}/edit")
-    public String editUser(Model model, @PathVariable long id, @ModelAttribute("editUser") User editUser) {
+    public String editUser(Model model, @PathVariable("id") long id, @ModelAttribute("editUser") User editUser) {
         userService.updateUser(id, editUser);
 
         return "redirect:/admin/user";

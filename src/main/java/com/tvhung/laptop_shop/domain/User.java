@@ -27,7 +27,7 @@ import lombok.ToString;
 @Builder
 @ToString
 @Entity
-@Table(name = DbConstants.User.TABLE_NAME)
+@Table(name = DbConstants.UserTable.TABLE_NAME)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,11 +46,11 @@ public class User {
     private String avatar;
 
     @ManyToOne
-    @JoinColumn(name = DbConstants.User.ROLE_ID)
+    @JoinColumn(name = DbConstants.UserTable.ROLE_ID)
     @ToString.Exclude
     private Role role;
 
-    @OneToMany(mappedBy = DbConstants.User.MAPPED_BY)
+    @OneToMany(mappedBy = DbConstants.UserTable.MAPPED_BY)
     @ToString.Exclude
     @Builder.Default
     private List<Order> orders = new ArrayList<>();

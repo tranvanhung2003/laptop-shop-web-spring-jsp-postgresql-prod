@@ -24,9 +24,9 @@ import lombok.ToString;
 @Builder
 @ToString
 @Entity
-@Table(name = DbConstants.OrderDetail.TABLE_NAME, uniqueConstraints = { @UniqueConstraint(columnNames = {
-        DbConstants.OrderDetail.ORDER_ID,
-        DbConstants.OrderDetail.PRODUCT_ID
+@Table(name = DbConstants.OrderDetailTable.TABLE_NAME, uniqueConstraints = { @UniqueConstraint(columnNames = {
+        DbConstants.OrderDetailTable.ORDER_ID,
+        DbConstants.OrderDetailTable.PRODUCT_ID
 })
 })
 public class OrderDetail {
@@ -39,12 +39,12 @@ public class OrderDetail {
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = DbConstants.OrderDetail.ORDER_ID)
+    @JoinColumn(name = DbConstants.OrderDetailTable.ORDER_ID)
     @ToString.Exclude
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name = DbConstants.OrderDetail.PRODUCT_ID)
+    @JoinColumn(name = DbConstants.OrderDetailTable.PRODUCT_ID)
     @ToString.Exclude
     private Product product;
 }

@@ -35,3 +35,4 @@ build/
 NOTE.md
 .env
 *.sql
+src/main/webapp/resources

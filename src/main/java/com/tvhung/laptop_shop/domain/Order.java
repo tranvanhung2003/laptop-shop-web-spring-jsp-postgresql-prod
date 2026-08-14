@@ -27,7 +27,7 @@ import lombok.ToString;
 @Builder
 @ToString
 @Entity
-@Table(name = DbConstants.Order.TABLE_NAME)
+@Table(name = DbConstants.OrderTable.TABLE_NAME)
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,11 +36,11 @@ public class Order {
     private double totalPrice;
 
     @ManyToOne
-    @JoinColumn(name = DbConstants.Order.USER_ID)
+    @JoinColumn(name = DbConstants.OrderTable.USER_ID)
     @ToString.Exclude
     private User user;
 
-    @OneToMany(mappedBy = DbConstants.Order.MAPPED_BY)
+    @OneToMany(mappedBy = DbConstants.OrderTable.MAPPED_BY)
     @ToString.Exclude
     @Builder.Default
     private List<OrderDetail> orderDetails = new ArrayList<>();

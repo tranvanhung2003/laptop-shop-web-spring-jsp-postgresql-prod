@@ -25,7 +25,7 @@ import lombok.ToString;
 @Builder
 @ToString
 @Entity
-@Table(name = DbConstants.Product.TABLE_NAME)
+@Table(name = DbConstants.ProductTable.TABLE_NAME)
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +49,7 @@ public class Product {
 
     private String target;
 
-    @OneToMany(mappedBy = DbConstants.Product.MAPPED_BY)
+    @OneToMany(mappedBy = DbConstants.ProductTable.MAPPED_BY)
     @ToString.Exclude
     @Builder.Default
     private List<OrderDetail> orderDetails = new ArrayList<>();
